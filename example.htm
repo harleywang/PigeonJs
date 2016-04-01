@@ -8,18 +8,18 @@
     <body>
 
         <script type="text/javascript">
-        PigeonJs.addHandler('undc.wanghailiang', function(ns, event){
-            console.log(ns, event.message, 'My key is wanghailiang');
+        PigeonJs.addHandler('uxdc.haleywang', function(ns, event){
+            console.log(ns, event.message, 'My key is haleywang');
         });
 
-        PigeonJs.addHandler('undc.ouyi', function(ns, event){
+        PigeonJs.addHandler('uxdc.ouyi', function(ns, event){
             console.log(ns, event.message, 'My key is ouyi');
         });
 
-        PigeonJs.trigger('undc', {message:"Hello PigeonJs!"});
+        PigeonJs.trigger('uxdc', {message:"Hello PigeonJs!"});
 
 
-        PigeonJs.removeHandler('undc.wanghailiang');
+        PigeonJs.removeHandler('uxdc.haleywang');
 
         </script>
     </body>

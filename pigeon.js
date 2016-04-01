@@ -1,6 +1,13 @@
+/**
+ * pigeon.js
+ * 
+ * Release 1.0.0
+ * @author <a href="mailto:haley.wang.vip@gmail.com">Harley Wang</a>
+ * @describe  一个轻量级自定义事件或观察者模式的实现。
+ */
 
-
-
+ 'use strict';
+ 
 
 var PigeonJs = (function(){
     var handlers = {};

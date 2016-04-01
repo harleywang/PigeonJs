@@ -21,24 +21,24 @@ PigeonJs
 
 ####Example：
 
-```
+```javascript
 // 添加订阅
-PigeonJs.addHandler('undc.wanghailiang', function(ns, event){
-    console.log(ns, event.message, 'My key is wanghailiang');
+PigeonJs.addHandler('uxdc.haleywang', function(ns, event){
+    console.log(ns, event.message, 'My key is haleywang');
 });
 
 // 添加订阅
-PigeonJs.addHandler('undc.ouyi', function(ns, event){
+PigeonJs.addHandler('uxdc.ouyi', function(ns, event){
     console.log(ns, event.message, 'My key is ouyi');
 });
 
 // 触发
-PigeonJs.trigger('undc', {message:"Hello PigeonJs!"});
+PigeonJs.trigger('uxdc', {message:"Hello PigeonJs!"});
 
 // 移除订阅
-PigeonJs.removeHandler('undc.wanghailiang');
+PigeonJs.removeHandler('uxdc.wanghailiang');
 
 // 清除整个事件类型
-PigeonJs.clearHandlers('undc');
+PigeonJs.clearHandlers('uxdc');
 
 ```
