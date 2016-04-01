@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PigeonJs Example</title>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="pigeon.js"></script>
+    </head>
+    <body>
+
+        <script type="text/javascript">
+        PigeonJs.addHandler('undc.wanghailiang', function(ns, event){
+            console.log(ns, event.message, 'My key is wanghailiang');
+        });
+
+        PigeonJs.addHandler('undc.ouyi', function(ns, event){
+            console.log(ns, event.message, 'My key is ouyi');
+        });
+
+        PigeonJs.trigger('undc', {message:"Hello PigeonJs!"});
+
+
+        PigeonJs.removeHandler('undc.wanghailiang');
+
+        </script>
+    </body>
+</html>
