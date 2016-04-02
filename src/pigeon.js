@@ -1,7 +1,7 @@
 /**
  * pigeon.js
  *
- * Release 1.0.0
+ * Release 1.2.0
  * @author <a href="mailto:haley.wang.vip@gmail.com">Harley Wang</a>
  * @describe  一个轻量级自定义事件或观察者模式的实现。
  */
@@ -20,12 +20,11 @@
     var handlers = {};
     var splitStr = function(ns){
         var values = ns.split('.', 2);
-        if(values.length !== 2){
-            throw "namespace format error!";
-        }
         return {'type':values[0], 'key':values[1]};
+    },
+    clearHandlers = function(type){
+        delete handlers[type];
     };
-
     /**
      * 添加事件
      * @param  {String} namespace   命名空间，格式必须为：type.key
@@ -42,11 +41,14 @@
     };
     /**
      * 移除事件
-     * @param  {string} namespace    命名空间，格式必须为：type.key
+     * @param  {string} namespace    命名空间，为：type.key 或 type
      */
     PigeonJs.removeHandler = function(namespace){
         var ns = splitStr(namespace);
-        if(handlers[ns.type] instanceof Array){
+        if(ns.type && !ns.key){
+            clearHandlers(ns.type);
+        }
+        else if(handlers[ns.type] instanceof Array){
             var events = handlers[ns.type];
             for(var i=0,len=events.length; i<len; i++){
                 if(events[i]['unique'] == ns.key){
@@ -56,31 +58,31 @@
             }
 
             if(events.length == 0){
-                this.clearHandlers(ns.type);
+                clearHandlers(ns.type);
             }
         }
     };
     /**
      * 触发器
-     * @param  {string} type                                        事件类型，为命令空间的前面部分
-     * @param  {Object|Array|String|Boolean|Number|Function} data   要传递的数据
+     * @param  {string} namespace                                   命名空间，为：type.key 或 type
+     * @param  {Object|Array|String|Boolean|Number|Function} data   要传递的数据，可选
      */
-    PigeonJs.trigger = function(type, data){
-        if(handlers[type] instanceof Array){
-            var events = handlers[type];
+    PigeonJs.trigger = function(namespace, data){
+        var ns = splitStr(namespace);
+
+        if(handlers[ ns.type ] instanceof Array){
+            var events = handlers[ns.type];
             for(var i=0,len=events.length; i<len; i++){
-                events[i]['handler'](type, data);
+                if(ns.key){
+                    if(events[i]['unique'] == ns.key){
+                        events[i]['handler'](ns, data);
+                        break;
+                    }
+                }else{
+                    events[i]['handler'](ns, data);
+                }
             }
-        }else{
-            throw "event type error!";
         }
     };
-    /**
-     * 清除事件
-     * @param  {string} type    事件类型，为命令空间的前面部分
-     */
-    PigeonJs.clearHandlers = function(type){
-        delete handlers[type];
-    }
 
 }));
