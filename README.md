@@ -14,8 +14,8 @@ PigeonJs
 
 #### NameSpace格式：
 
-`type.key` : type为事件的类型，表示群组；key为订阅的唯一标识符
-> 注意：多层命名空间（例如：uxdc.haleywang.age），第二层后面的部分会被忽略掉
+`type.key` : `type` 为事件的类型，表示群组；`key` 为订阅的唯一标识符
+> 注意：不支持多层命名空间（例如：uxdc.haleywang.age），第二层后面的部分会被忽略掉
 
 
 #### Example：
