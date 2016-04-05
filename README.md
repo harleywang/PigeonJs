@@ -94,6 +94,6 @@ ReactDOM.render(<ShortcutMenu />, document.getElementById('shortcut_menu'));
 ```javascript
 // 更多快捷菜单
 onMore: function(e){
-    PigeonJs.trigger('ShortcutMenu');
+    PigeonJs.trigger('ShortcutMenu.onShow');
 }
 ```

@@ -64,7 +64,7 @@
     };
     /**
      * 触发器
-     * @param  {string} namespace                                   命名空间，为：type.key 或 type
+     * @param  {string} namespace                                   命名空间，格式为：type.key 或 type
      * @param  {Object|Array|String|Boolean|Number|Function} data   要传递的数据，可选
      */
     PigeonJs.trigger = function(namespace, data){
