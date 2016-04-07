@@ -6,9 +6,8 @@
  * @describe  一个轻量级自定义事件或观察者模式的实现。
  */
 
-'use strict';
-
 (function(global, factory) {
+    'use strict';
     if (typeof exports === "object" && exports) {
         factory(exports); // CommonJS
     } else if (typeof define === "function" && define.amd) {
@@ -17,6 +16,8 @@
         factory(global.PigeonJs = {}); // <script>
     }
 }(window, function(PigeonJs) {
+    'use strict';
+
     var handlers = {};
     var splitStr = function(ns){
         var values = ns.split('.', 2);
